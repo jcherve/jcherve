@@ -1,0 +1,78 @@
+<body class="dashboard">
+  <!--
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let request of newRequests ">
+            <td>{{request.employee}}</td>
+            <td>{{request.startDate}}</td>
+            <td>{{request.endDate}}</td>
+            <td>{{request.holidayType}}</td>
+            <td>{{request.endDate}}</td>
+            <td><button>Delete</button><button>Approve</button></td>
+        </tr>
+    </tbody>
+    
+</table>
+//-->
+
+  <div class="container">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element._id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="employee">
+        <th mat-header-cell *matHeaderCellDef>employee</th>
+        <td mat-cell *matCellDef="let element">{{ element.employee }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dateRange">
+        <th mat-header-cell *matHeaderCellDef>dateRange</th>
+        <td mat-cell *matCellDef="let element">{{ element.dateRange }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="holidayType">
+        <th mat-header-cell *matHeaderCellDef>holidayType</th>
+        <td mat-cell *matCellDef="let element">{{ element.holidayType }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="holidayStatus">
+        <th mat-header-cell *matHeaderCellDef>holidayStatus</th>
+        <td mat-cell *matCellDef="let element">{{ element.holidayStatus }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Delete">
+        <th mat-header-cell *matHeaderCellDef>Delete</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-raised-button
+            color="primary"
+            title="Delete"
+            (click)="delete(element._id)"
+          >
+            delete
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      #paginator
+      [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+    ></mat-paginator>
+  </div>
+</body>
